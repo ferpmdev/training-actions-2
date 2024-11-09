@@ -26,3 +26,8 @@ jobs:
       - name: 'Showing env2'
         run: |
           echo 'Runs on: ${{ env.yes }}'
+
+      - name: 'Showing some default variables'
+        run: |
+          echo 'Event: ${{ GITHUB_ENV }}'
+          echo 'Url: ${{ GITHUB_GRAPHQL_URL }}'
