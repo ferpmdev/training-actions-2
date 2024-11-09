@@ -18,11 +18,9 @@ jobs:
 
     steps:
       - name: 'Show message'
-      run: |
-        echo 'Hello from GitHub Actions!'
+      run: echo 'Hello from GitHub Actions!'
 
-      - name 'Showing env'
+      - name: 'Showing env'
       run: |
       echo 'Platform: ${{ env.platform }}'
       echo 'Runs on: ${{ env.runs-on }}'
-      
