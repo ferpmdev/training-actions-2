@@ -9,6 +9,7 @@ jobs:
     env:
       runs: ubuntu-latest
       platform: 1234
+      yes: wrote
 
     runs-on: ubuntu-latest
 
@@ -17,6 +18,10 @@ jobs:
         run: echo 'Hello from GitHub Actions!'
 
       - name: 'Showing env'
+        if: ${{ env.runs == 'sad'}}
         run: |
           echo 'Platform: ${{ env.platform }}'
           echo 'Runs on: ${{ env.runs }}'
+          
+      - name: 'Showing env2'
+        run: echo 'Runs on: ${{ env.yes }}'
