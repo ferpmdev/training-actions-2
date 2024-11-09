@@ -4,12 +4,16 @@ on:
   push:
     branches: ['main']
 
+env:
+  DAY_OF_WEEK: Monday
+
 jobs:
   build:
     env:
       runs: ubuntu-latest
       platform: 1234
       yes: wrote
+      Greeting: Hello
 
     runs-on: ubuntu-latest
 
@@ -28,6 +32,6 @@ jobs:
           echo 'Runs on: ${{ env.yes }}'
 
       - name: 'Showing some default variables'
-        run: |
-          echo 'Event: ${{ GITHUB_ENV }}'
-          echo 'Url: ${{ GITHUB_GRAPHQL_URL }}'
+        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        env:
+          First_Name: Mona
