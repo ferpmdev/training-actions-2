@@ -1,0 +1,35 @@
+on:
+  push:
+    branches: ['main']
+
+env:
+  DAY_OF_WEEK: Monday
+
+jobs:
+  build:
+    env:
+      runs: ubuntu-latest
+      platform: 1234
+      yes: wrote
+      Greeting: Hello
+
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: 'Show message'
+        run: echo 'Hello from GitHub Actions!'
+
+      - name: 'Showing env'
+        if: ${{ env.runs == 'sad'}}
+        run: |
+          echo 'Platform: ${{ env.platform }}'
+          echo 'Runs on: ${{ env.runs }}'
+
+      - name: 'Showing env2'
+        run: |
+          echo 'Runs on: ${{ env.yes }}'
+
+      - name: 'Showing some default variables'
+        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
+        env:
+          First_Name: Mona
