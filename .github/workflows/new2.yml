@@ -1,35 +1,30 @@
 on:
-  push:
-    branches: ['main']
-
+  workflow_dispatch:
 env:
-  DAY_OF_WEEK: Monday
+  # Setting an environment variable with the value of a configuration variable
+  env_var: ${{ vars.ENV_CONTEXT_VAR }}
 
 jobs:
-  build:
-    env:
-      runs: ubuntu-latest
-      platform: 1234
-      yes: wrote
-      Greeting: Hello
-
-    runs-on: ubuntu-latest
-
+  display-variables:
+    name: ${{ vars.JOB_NAME }}
+    # You can use configuration variables with the `vars` context for dynamic jobs
+    if: ${{ vars.USE_VARIABLES == 'true' }}
+    runs-on: ${{ vars.RUNNER }}
+    environment: ${{ vars.ENVIRONMENT_STAGE }}
     steps:
-      - name: 'Show message'
-        run: echo 'Hello from GitHub Actions!'
-
-      - name: 'Showing env'
-        if: ${{ env.runs == 'sad'}}
-        run: |
-          echo 'Platform: ${{ env.platform }}'
-          echo 'Runs on: ${{ env.runs }}'
-
-      - name: 'Showing env2'
-        run: |
-          echo 'Runs on: ${{ env.yes }}'
-
-      - name: 'Showing some default variables'
-        run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
-        env:
-          First_Name: Mona
+    - name: Use variables
+      run: |
+        echo "repository variable : $REPOSITORY_VAR"
+        echo "organization variable : $ORGANIZATION_VAR"
+        echo "overridden variable : $OVERRIDE_VAR"
+        echo "variable from shell environment : $env_var"
+      env:
+        REPOSITORY_VAR: ${{ vars.REPOSITORY_VAR }}
+        ORGANIZATION_VAR: ${{ vars.ORGANIZATION_VAR }}
+        OVERRIDE_VAR: ${{ vars.OVERRIDE_VAR }}
+        
+    - name: ${{ vars.HELLO_WORLD_STEP }}
+      if: ${{ vars.HELLO_WORLD_ENABLED == 'true' }}
+      uses: actions/hello-world-javascript-action@main
+      with:
+        who-to-greet: ${{ vars.GREET_NAME }}
