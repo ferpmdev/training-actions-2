@@ -30,6 +30,8 @@ jobs:
       - name: 'Showing env2'
         run: |
           echo 'Runs on: ${{ env.yes }}'
+          echo 'Github Actor: $GITHUB_ACTOR'
+          echo 'Github Actor: $GITHUB_ACTIONS'
 
       - name: 'Showing some default variables'
         run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
