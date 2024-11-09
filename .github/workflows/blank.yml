@@ -18,5 +18,5 @@ jobs:
 
       - name: 'Showing env'
         run: |
-        echo 'Platform: ${{ env.platform }}'
-        echo 'Runs on: ${{ env.runs }}'
+          echo 'Platform: ${{ env.platform }}'
+          echo 'Runs on: ${{ env.runs }}'
