@@ -35,14 +35,10 @@ jobs:
           echo "Github Actor: $GITHUB_ACTOR"
         
       - name: 'Showing message if user is correct'
-        if: ${{ env.mySecretUser == 'ferpm'}}
+        if: ${{ env.mySecretUser == 'ferpm' &&  env.mySecretUrl == 'something' }}
         run: |
           echo "Github Actor: ${{env.mySecretUser}}"
-
-      - name: 'Showing message if url is correct'
-        if: ${{ env.mySecretUrl == 'something'}}
-        run: |
-          echo "Github Actor: ${{env.mySecretUrl}}"
+          echo "Github Url: ${{env.mySecretUrl}}"
 
       - name: 'Showing some default variables'
         run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
