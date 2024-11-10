@@ -27,12 +27,15 @@ jobs:
         run: |
           echo 'Platform: ${{ env.platform }}'
           echo 'Runs on: ${{ env.runs }}'
-
+        
       - name: 'Showing env2'
         run: |
           echo 'Runs on: ${{ env.yes }}'
           echo "Github Actor: $GITHUB_ACTOR"
-          echo "Github Actor: $GITHUB_ACTIONS"
+        
+      - name: 'Showing message if url is correct'
+        if: ${{ env.mySecretUrl == 'https://my-secret-ulr.com'}}
+        run: |
           echo "Github Actor: ${{env.mySecretUrl}}"
 
       - name: 'Showing some default variables'
