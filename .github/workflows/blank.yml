@@ -33,6 +33,7 @@ jobs:
           echo 'Runs on: ${{ env.yes }}'
           echo "Github Actor: $GITHUB_ACTOR"
           echo "Github Actor: $GITHUB_ACTIONS"
+          echo "Github Actor: ${{env.mySecretUrl}}"
 
       - name: 'Showing some default variables'
         run: echo "$Greeting $First_Name. Today is $DAY_OF_WEEK!"
