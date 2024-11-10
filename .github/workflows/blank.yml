@@ -15,7 +15,7 @@ jobs:
       yes: wrote
       Greeting: Hello
       mySecretUrl: ${{secrets.MY_SECRET_URL}}
-      mySecretUser: ${{secrets.MY_USER_SECRET}}
+      mySecretUser: ${{secrets.MY_SECRET_USER}}
 
     runs-on: ubuntu-latest
 
