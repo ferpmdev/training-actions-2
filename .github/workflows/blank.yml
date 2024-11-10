@@ -15,6 +15,7 @@ jobs:
       yes: wrote
       Greeting: Hello
       mySecretUrl: ${{secrets.MY_SECRET_URL}}
+      mySecretUser: ${{secrets.MY_USER_SECRET}}
 
     runs-on: ubuntu-latest
 
@@ -34,7 +35,7 @@ jobs:
           echo "Github Actor: $GITHUB_ACTOR"
         
       - name: 'Showing message if url is correct'
-        if: ${{ env.mySecretUrl == 'https://my-secret-ulr.com'}}
+        if: ${{ env.mySecretUser == 'ferpm'}}
         run: |
           echo "Github Actor: ${{env.mySecretUrl}}"
 
