@@ -34,8 +34,12 @@ jobs:
           echo 'Runs on: ${{ env.yes }}'
           echo "Github Actor: $GITHUB_ACTOR"
         
-      - name: 'Showing message if url is correct'
+      - name: 'Showing message if user is correct'
         if: ${{ env.mySecretUser == 'ferpm'}}
+        run: |
+          echo "Github Actor: ${{env.mySecretUser}}"
+
+      - name: 'Showing message if url is correct'
         if: ${{ env.mySecretUrl == 'something'}}
         run: |
           echo "Github Actor: ${{env.mySecretUrl}}"
